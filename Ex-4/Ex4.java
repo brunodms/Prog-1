@@ -10,6 +10,14 @@ class acampamento{
         setIdade(idade);
     }
     public void definirEquipe(){
+        getIdade();
+        if(idade>=6 && idade<=10){
+            equipe = 'A';
+        }else if(idade>=11 && idade<=20){
+            equipe = 'B';
+        }else if(idade>=21){
+            equipe = 'C';
+        }
         setEquipe(equipe);
     }
     public void setNome(String nome){
@@ -25,21 +33,13 @@ class acampamento{
         return idade;
     }
     public void setEquipe(char equipe){
-        getIdade();
-        if(idade<=6 && idade>=10){
-            equipe = 'A';
-        }else if(idade<=11 && idade>=20){
-            equipe = 'B';
-        }else if(idade<=21){
-            equipe = 'C';
-        }
         this.equipe = equipe;
     }
     public char getEquipe(){
         return equipe;
     }
     public String toString(){
-        return "Nome: " + this.nome + ", Idade: " + this.idade + ", Equipe = " + this.equipe;
+        return "Nome: " + getNome() + ", Idade: " + getIdade() + ", Equipe = " + getEquipe();
     }
 };
 public class Ex4 {
@@ -48,11 +48,11 @@ public class Ex4 {
         for (int i = 0; i < 10; i++){
             A[i] = new acampamento();
             Scanner receba = new Scanner(System.in);
-            A[i].nome = receba.nextLine();
-            A[i].idade = receba.nextInt();
-            A[i].Acampamento(A[i].nome, A[i].idade);
-            A[i].setEquipe(A[i].equipe);
-            A[i].toString();
+            String nome = receba.nextLine();
+            int idade = receba.nextInt();
+            A[i].Acampamento(nome, idade);
+            A[i].definirEquipe();
+            System.out.println(A[i]);
             receba.close();
         }
     }
