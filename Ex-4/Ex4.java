@@ -39,7 +39,7 @@ class acampamento{
         return equipe;
     }
     public String toString(){
-        return "Nome: " + getNome() + ", Idade: " + getIdade() + ", Equipe = " + getEquipe();
+        return "Nome: " + getNome() + ", Idade: " + getIdade() + ", Equipe: " + getEquipe();
     }
 };
 public class Ex4 {
