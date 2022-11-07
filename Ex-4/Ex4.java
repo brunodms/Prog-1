@@ -13,18 +13,12 @@ class acampamento{
         setEquipe(equipe);
     }
     public void setNome(String nome){
-        Scanner receba = new Scanner(System.in);
-        nome = receba.nextLine();
-        receba.close();
         this.nome = nome;
     }
     public String getNome(){
         return nome;
     }
     public void setIdade(int idade){
-        Scanner receba = new Scanner(System.in);
-        idade = receba.nextInt();
-        receba.close();
         this.idade = idade;
     }
     public int getIdade(){
@@ -50,6 +44,16 @@ class acampamento{
 };
 public class Ex4 {
     public static void main (String[] args){
-        
+        acampamento[] A = new acampamento[10]; 
+        for (int i = 0; i < 10; i++){
+            A[i] = new acampamento();
+            Scanner receba = new Scanner(System.in);
+            A[i].nome = receba.nextLine();
+            A[i].idade = receba.nextInt();
+            A[i].Acampamento(A[i].nome, A[i].idade);
+            A[i].setEquipe(A[i].equipe);
+            A[i].toString();
+            receba.close();
+        }
     }
 };
