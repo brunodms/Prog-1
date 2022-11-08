@@ -5,12 +5,11 @@ class acampamento{
     int idade;
     char equipe;
 
-    public void Acampamento(String nome, int idade){
+    acampamento(String nome, int idade){
         setNome(nome);
         setIdade(idade);
     }
     public void definirEquipe(){
-        getIdade();
         if(idade>=6 && idade<=10){
             equipe = 'A';
         }else if(idade>=11 && idade<=20){
@@ -45,15 +44,15 @@ class acampamento{
 public class Ex4 {
     public static void main (String[] args){
         acampamento[] A = new acampamento[10]; 
+        Scanner receba = new Scanner(System.in);
         for (int i = 0; i < 10; i++){
-            A[i] = new acampamento();
-            Scanner receba = new Scanner(System.in);
             String nome = receba.nextLine();
             int idade = receba.nextInt();
-            A[i].Acampamento(nome, idade);
+            receba.nextLine();
+            A[i] = new acampamento(nome, idade);
             A[i].definirEquipe();
             System.out.println(A[i]);
-            receba.close();
         }
+        receba.close();
     }
 };
