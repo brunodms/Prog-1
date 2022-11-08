@@ -41,7 +41,7 @@ class acampamento{
         return "Nome: " + getNome() + ", Idade: " + getIdade() + ", Equipe: " + getEquipe();
     }
 };
-public class Ex4 {
+public class Atividade1{
     public static void main (String[] args){
         acampamento[] A = new acampamento[10]; 
         Scanner receba = new Scanner(System.in);
