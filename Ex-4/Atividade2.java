@@ -51,7 +51,7 @@ class produto{
         return "Nome: " + getNome() + ", Valor: " + getValor() + ", Quantidade: " + getQuantidade();
     }
 };
-public class Atividade1 {
+public class Atividade2 {
     public static void main (String[] args){
         int i = 0;
         produto[] P = new produto[10]; 
