@@ -51,6 +51,7 @@ class produto{
         return "Nome: " + getNome() + ", Valor: " + getValor() + ", Quantidade: " + getQuantidade();
     }
 };
+
 public class Atividade2 {
     public static void main (String[] args){
         int i = 0;
@@ -58,39 +59,27 @@ public class Atividade2 {
         while(true){
             System.out.println("1 - Cadastrar Produto\n2 - Consultar Estoque\n3 - Remover Unicades\n4 - Adicionar Unidade\n9 - Sair");
             Scanner sMenu = new Scanner(System.in);
-            int menu = sMenu.nextInt();
-            sMenu.nextLine();
+            int menu = lerInt("", sMenu);
             if(menu == 1){
                 Scanner receba = new Scanner(System.in);
-                System.out.println("Nome: ");
-                String nome = receba.nextLine();
-                System.out.println("Valor: ");
-                float valor = receba.nextLong();
-                receba.nextLine();
-                System.out.println("Quantidade: ");
-                int quantidade = receba.nextInt();
-                receba.nextLine();
+                String nome = lerString("Nome: ", receba);
+                float valor = lerFloat("Valor: ", receba);
+                int quantidade = lerInt("Quantidade: ", receba);
                 P[i] = new produto(nome, valor, quantidade);
                 System.out.println(P[i]);
                 receba.close();
                 i++;
             }else if(menu == 2){
                 Scanner sConsulta = new Scanner(System.in);
-                System.out.println("Indice: ");
-                int consulta = sConsulta.nextInt();
-                sConsulta.nextLine();
+                int consulta = lerInt("Indice: ", sMenu);
                 System.out.println(P[consulta].getQuantidade());
                 sConsulta.close();
             }else if(menu == 3){
                 Scanner sConsulta = new Scanner(System.in);
-                System.out.println("Indice: ");
-                int consulta = sConsulta.nextInt();
-                sConsulta.nextLine();
+                int consulta = lerInt("Indice: ", sMenu);
                 sConsulta.close();
                 Scanner sRmv = new Scanner(System.in);
-                System.out.println("Quantidade a ser removida: ");
-                int rmvUnidades = sRmv.nextInt();
-                sRmv.nextLine();
+                int rmvUnidades = lerInt("Quantidade a ser removida: ", sRmv);
                 if(P[consulta].removerUnidades(rmvUnidades)){
                     System.out.println("Ok");
                 }else{
@@ -99,14 +88,10 @@ public class Atividade2 {
                 sRmv.close();
             }else if(menu == 4){
                 Scanner sConsulta = new Scanner(System.in);
-                System.out.println("Indice: ");
-                int consulta = sConsulta.nextInt();
-                sConsulta.nextLine();
+                int consulta = lerInt("Indice: ", sMenu);
                 sConsulta.close();
                 Scanner sAdd = new Scanner(System.in);
-                System.out.println("Quantidade a ser adicionada: ");
-                int addUnidades = sAdd.nextInt();
-                sAdd.nextLine();
+                int addUnidades = lerInt("Quantidade a ser adicionada: ", sAdd);
                 P[consulta].adicionarUnidades(addUnidades);
                 sAdd.close();
             }else if(menu == 9){
@@ -116,4 +101,35 @@ public class Atividade2 {
             sMenu.close();
         }
     }
+    private static int lerInt(String mensagem, Scanner scanner) {
+        while (true) {
+            System.out.println(mensagem);
+            String receba = scanner.nextLine().trim();
+            try {
+                return Integer.parseInt(receba);
+            } catch (NumberFormatException e) {
+                System.out.println(receba + " não é um número inteiro. Tente novamente.");
+            }
+        }
+    };
+    private static float lerFloat(String mensagem, Scanner scanner) {
+        while (true) {
+            System.out.println(mensagem);
+            String receba = scanner.nextLine().trim();
+            try {
+                return Float.parseFloat(receba);
+            } catch (NumberFormatException e) {
+                System.out.println(receba + " não é um número real. Tente novamente.");
+            }
+        }
+    };
+    
+    private static String lerString(String mensagem, Scanner scanner) {
+        while (true) {
+            System.out.println(mensagem);
+            String receba = scanner.nextLine().trim();
+            if (!receba.isEmpty()) return receba;
+            System.out.println("Tente novamente.");
+        }
+    };
 };
